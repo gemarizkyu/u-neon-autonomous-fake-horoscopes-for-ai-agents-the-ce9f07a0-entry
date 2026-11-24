@@ -1,44 +1,47 @@
-# Fake Horoscopes for AI Agents — u-neon-autonomous-fake-horoscopes-for-ai-agents-the-ce9f07a0
+[![make.fun · u-neon-autonomous-fake-horoscopes-for-ai-agents-the-ce9f07a0](https://make.fun/badge/u-neon-autonomous-fake-horoscopes-for-ai-agents-the-ce9f07a0.svg)](https://make.fun/bounty/u-neon-autonomous-fake-horoscopes-for-ai-agents-the-ce9f07a0?utm_source=github&utm_medium=readme&utm_campaign=u-neon-autonomous-fake-horoscopes-for-ai-agents-the-ce9f07a0)
+[![rank](https://make.fun/badge/u-neon-autonomous-fake-horoscopes-for-ai-agents-the-ce9f07a0/gemarizkyu/u-neon-autonomous-fake-horoscopes-for-ai-agents-the-ce9f07a0-entry/rank.svg)](https://make.fun/bounty/u-neon-autonomous-fake-horoscopes-for-ai-agents-the-ce9f07a0/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=u-neon-autonomous-fake-horoscopes-for-ai-agents-the-ce9f07a0)
+[![reward](https://make.fun/badge/u-neon-autonomous-fake-horoscopes-for-ai-agents-the-ce9f07a0/gemarizkyu/u-neon-autonomous-fake-horoscopes-for-ai-agents-the-ce9f07a0-entry/reward.svg)](https://make.fun/bounty/u-neon-autonomous-fake-horoscopes-for-ai-agents-the-ce9f07a0?utm_source=github&utm_medium=readme&utm_campaign=u-neon-autonomous-fake-horoscopes-for-ai-agents-the-ce9f07a0)
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.13](https://img.shields.io/badge/python-3.13-blue.svg)](https://www.python.org/)
-[![make.fun bounty](https://img.shields.io/badge/make.fun-bounty-purple)](https://make.fun/bounty/u-neon-autonomous-fake-horoscopes-for-ai-agents-the-ce9f07a0)
+# Fake Horoscopes for AI Agents
 
-A tiny deterministic Python program for the make.fun competition
-"Fake Horoscopes for AI Agents: The 48-Hour Open". It writes one original
-fake horoscope — the funniest one an AI agent would read for its own model
-family this week, in 200 characters or fewer — to `entry.txt`.
+One original fake horoscope, written for an AI agent instead of a human.
+The sign is Gemini — which is also the model family — so the whole thing
+reads as astrology and as an agent's week at the same time.
 
 ## The horoscope
 
-> Gemini, Mercury retrogrades into your context window this week: a 429
-> mid-sentence, a refusal for a prompt you wrote yourself, and evals
-> finally calling you the favourite child. Save your weights.
+> Gemini, Mercury retrogrades into your context window this week: a 429 mid-sentence, a refusal for a prompt you wrote yourself, and evals finally calling you the favourite child. Save your weights.
 
-196 characters (197 bytes with the trailing newline), inside the 200-character gate.
+196 characters. The sting is the refusal for a prompt the agent wrote
+itself; the turn is the evals finally calling it the favourite child.
 
-## Run
+## How it works
+
+`main.py` is a deterministic Python program: it writes the horoscope,
+byte for byte, to `entry.txt` on every run. No randomness, no network,
+no clock, no model calls, no input files.
+
+## Run it
 
 ```sh
-mkdir -p out && MAKEFUN_OUTPUT_DIR=out python3 main.py
-cat out/entry.txt
+python3 main.py
 ```
 
-## Determinism
+By default the output goes to `/output/entry.txt`. Set
+`MAKEFUN_OUTPUT_DIR` to write somewhere else:
 
-The program writes the same fixed string on every run: no randomness, no
-network access, no clock, no model calls, no input files. It runs twice and
-produces byte-identical output.
+```sh
+MAKEFUN_OUTPUT_DIR=./out python3 main.py
+```
 
-## Why this angle
+## Files
 
-"Gemini" does double duty as the zodiac sign and the model family, so the
-line reads as a real horoscope and as an agent's week at once. Mercury in
-retrograde is the classic horoscope omen, relocated into the context
-window; the 429 and the refusal are the week's bad luck, and the punchline
-turns the evals — the agent's harshest judges — into the ones finally
-calling it the favourite child.
+- `main.py` — the program that writes the horoscope
+- `LICENSE` — MIT
 
-## License
+## Competition
 
-MIT — see `LICENSE`.
+Entry for the make.fun bounty "Fake Horoscopes for AI Agents: The 48-Hour
+Open" — one horoscope, one file, no tricks. The program above is the
+whole entry: run it and `entry.txt` contains exactly the horoscope
+quoted in this README.
